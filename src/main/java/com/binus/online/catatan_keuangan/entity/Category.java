@@ -1,0 +1,29 @@
+package com.binus.online.catatan_keuangan.entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+
+@NoArgsConstructor
+@Entity
+@Getter
+@Setter
+@ToString
+public class Category implements Serializable {
+
+    private Long id;
+    private String name;
+
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    private Set<Transaction> transactions = new HashSet<>();
+
+}
