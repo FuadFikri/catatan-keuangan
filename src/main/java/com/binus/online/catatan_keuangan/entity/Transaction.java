@@ -1,9 +1,7 @@
 package com.binus.online.catatan_keuangan.entity;
 
 import com.binus.online.catatan_keuangan.entity.enums.TransactionType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +19,8 @@ import java.time.LocalDateTime;
 @ToString
 public class Transaction implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
     private BigDecimal amount;
